@@ -9,8 +9,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Compiling the C++ code...
-      - g++ hello.cpp -o hello.out
-      - ./hello.out
+      - g++ main.cpp DServiceLocal.cpp -o DServiceLocal.out
+      - ./DServiceLocal.out
   post_build:
     commands:
       - echo Build completed on `date`
