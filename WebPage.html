@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Diabetic Spreadsheet</title>
+</head>
+
+<body>
+  <h1> Enter your daily diet data </h1>
+    <select name="Day" form="dailyData">
+      <option value=1>Sunday</option>
+      <option value=2>Monday</option>
+      <option value=3>Tuesday</option>
+      <option value=4>Wednesday</option>
+      <option value=5>Thursday</option>
+      <option value=6>Friday</option>
+      <option value=7>Saturday</option>
+    </select>
+    <br>
+      <form action="index.php" id ="dailyData" method="get">
+        Glucose level: <input type="number" name="Glucose"><br> 
+        Carb intake: <input type="number" name="CarbIntake"><br>
+        Insulin: <input type="number" name="Insulin"><br>
+        Time since last meal (hours): <input type="number" name="Hours">
+             (minutes): <input type="number" name="Minutes"><br>
+        <input type="submit" value="Submit">
+      </form>
+      
+</body>
+</html>
