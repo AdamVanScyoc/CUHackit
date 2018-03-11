@@ -5,11 +5,7 @@ from flask import Flask, request, jsonify, render_template, request, url_for, re
 import json
 
 app = Flask(__name__,template_folder="templates/",static_url_path='/static')
-try:
-	with open('database.json') as json_data:
-	    databaseFile = json.load(json_data)
-except:
-	databaseFile = []
+
 
 @app.route('/')
 def main():
@@ -17,6 +13,11 @@ def main():
 
 @app.route('/submitForm', methods=["POST"])
 def addData():
+	try:
+		with open('database.json') as json_data:
+		    databaseFile = json.load(json_data)
+	except:
+		databaseFile = []
 	sample = request.form.to_dict()
 	databaseFile.append(sample)
 	with open('database.json', 'w') as fp:
