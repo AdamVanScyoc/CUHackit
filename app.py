@@ -24,6 +24,10 @@ def addData():
 	return render_template('newPage.html')
 	#return redirect(url_for('main'))
 
+@app.route('/results')
+def returnResults():
+	return jsonify(databaseFile)
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
