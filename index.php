@@ -5,6 +5,10 @@
   </head>
   
   <?php
+    echo "First name is: " . $_GET["firstName"];
+    echo "<br>";
+    echo "Last name is: " . $_GET["lastName"];
+    echo "<br>";
     echo "Day is: " . $_GET["Day"];
     echo "<br>";
     echo "Glucose is: " . $_GET["Glucose"];
@@ -24,6 +28,9 @@
   
     $my_file = fopen("dataFile.txt", "a") or die("Unable to open file!");
     $new_line = "\n";
+    $fullName = $_GET["firstName"] . " " . $_GET["lastName"];
+    fwrite($my_file, $fullName);
+    fwrite($my_file, $new_line);
     fwrite($my_file, $_GET["Day"]);
     fwrite($my_file, $new_line);
     fwrite($my_file, $_GET["Glucose"]);
