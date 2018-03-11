@@ -4,8 +4,6 @@ sys.setdefaultencoding('UTF8')
 from flask import Flask, request, jsonify, render_template, request, url_for, redirect, Markup, Response, send_file, send_from_directory, make_response
 
 
-app = Flask(__name__)
-
 app = Flask(__name__,template_folder="templates/",static_url_path='/static')
 
 @app.route('/')
@@ -15,8 +13,6 @@ def main():
 @app.route('/submitForm', methods=["POST"])
 def addData():
 	print(request.form.to_dict())
-	#for key, value in request.form.items():
-	#	print("{} - {}".format(key, value))
 	return render_template('index.html')
 
 if __name__ == "__main__":
