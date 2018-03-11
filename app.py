@@ -14,8 +14,9 @@ def main():
 
 @app.route('/submitForm', methods=["POST"])
 def addData():
-	for key, value in request.form.items():
-		print("{} - {}".format(key, value))
+	print(request.form.to_dict())
+	#for key, value in request.form.items():
+	#	print("{} - {}".format(key, value))
 	return render_template('index.html')
 
 if __name__ == "__main__":
