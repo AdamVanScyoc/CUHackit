@@ -13,7 +13,7 @@ def main():
 	return render_template('index.html')
 
 @app.route('/submitForm', methods=["POST"])
-def main():
+def addData():
 	for key, value in request.form.items():
 		print("{} - {}".format(key, value))
 	return render_template('index.html')
