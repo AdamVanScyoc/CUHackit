@@ -2,9 +2,15 @@
 <html>
 <head>
 	<title>Diabetic Spreadsheet</title>
+
 </head>
 
 <body>
+
+    <script>
+      function resetData() {document.getElementById("dailyData").reset();}
+    </script>
+
   <h1> Enter your diet intake for the day </h1>
     <form action="{{url_for('Add') }}" id="dailyData" method="post">
        First Name: <input type="text" name="firstName"><br>
