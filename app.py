@@ -22,8 +22,8 @@ def addData():
 	databaseFile.append(sample)
 	with open('database.json', 'w') as fp:
 		json.dump(databaseFile, fp)
-	info = compareToLast(sample['firstName'], sample["lastName"], sample["Glucose"], sample["Insulin"], sample["carbIntake"])
-	return render_template('newPage.html')
+	info = compareToLast(sample['firstName'], sample["lastName"], sample["Glucose"], sample["Insulin"], sample["CarbIntake"])
+	return render_template('newPage.html', info=info)
 	#return redirect(url_for('main'))
 
 @app.route('/results')
@@ -32,27 +32,50 @@ def returnResults():
 
 def compareToLast(firstName, lastName, glucose, insulin, carbIntake):
 	try:
+		with open('database.json') as json_data:
+		    databaseFile = json.load(json_data)
+	except Exception as exp:
+		print exp
+		databaseFile = []
+	glevel = glucose
+	ilevel = insulin
+	clevel = carbIntake
+	print databaseFile
+	try:
 		allGVals = []
 		allCVals = []
 		allIVals = []
 		for var in databaseFile:
-			if var['firstName'] == firstName && var['lastName'] == lastName:
-				allGVals.append(var['Glucose'])
-				allCVals.append(var["CarbIntake"])
-				allIVals.append(var['Insulin'])
+			if var['firstName'] == firstName and var['lastName'] == lastName:
+				allGVals.append(int(var['Glucose']))
+				allCVals.append(int(var["CarbIntake"]))
+				allIVals.append(int(var['Insulin']))
 		if len(allGVals) == 1:
 			glucose = False
 			carbIntake = False
 			insulin = False
 		else:
-			glucose = (float(sum(allGVals)) / float(len(allGVals)) > glucose)
-			carbIntake = (float(sum(allCVals)) / float(len(allCVals)) > carbIntake)
-			insulin = (float(sum(allIVals)) / float(len(allIVals)) > insluin)
-		except:
-			glucose = False
-			carbIntake = False
-			insulin = False
-	return {"Glucose": glucose, "carbIntake": carbIntake, "Insulin": insulin}
+			glucose = ((float(sum(allGVals)) / float(len(allGVals))) > glucose)
+			carbIntake = ((float(sum(allCVals)) / float(len(allCVals))) > carbIntake)
+			insulin = ((float(sum(allIVals)) / float(len(allIVals))) > insulin)
+	except Exception as exp:
+		print(exp)
+		glucose = False
+		carbIntake = False
+		insulin = False
+	if glucose == True:
+		glucose = "Higher"
+	else:
+		glucose = "Lower"
+	if carbIntake == True:
+		carbIntake = "Higher"
+	else:
+		carbIntake = "Lower"
+	if insulin == True:
+		insulin = "Higher"
+	else:
+		insulin = "Lower"
+	return {"Glucose": {"Level": glevel, "High": glucose}, "carbIntake": {"Level": clevel, "High": carbIntake}, "Insulin": {"Level": ilevel, "High": insulin}}
 
 
 if __name__ == "__main__":
