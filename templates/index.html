@@ -4,7 +4,23 @@
 	<title>Diabetic Spreadsheet</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style>
+::-webkit-input-placeholder {
+   text-align: center;
+}
 
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+}
+
+:-ms-input-placeholder {
+   text-align: center;
+}
+</style>
 </head>
 
 <body>
@@ -13,7 +29,7 @@
       function resetData() {document.getElementById("dailyData").reset();}
     </script>
     <div class="form-group form-group-lg">
-<div class="col-sm-9">
+<div class="col-sm-9" align="center">
 
   <h1> Enter your diet intake for the day </h1>
     <form action="{{url_for('addData') }}" id="dailyData" method="post">
@@ -37,8 +53,9 @@
       <option value=7>Saturday</option>
     </select>
     <br>
-
-        Glucose level: <input type="number" name="Glucose"><br>
+  <div class="col-10">
+      <input class="form-control flipthis-highlight" type="number" name="Glucose" align='center' placeholder="Glucose level">
+    </div>
         Carb intake: <input type="number" name="CarbIntake"><br>
         Insulin: <input type="number" name="Insulin"><br>
         Time since last meal (hours): <input type="number" name="Hours">
