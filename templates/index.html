@@ -20,6 +20,12 @@
 <!-- Include Date Range Picker -->
 <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="css/bootstrap.min.css" />
+<link type="text/css" href="css/bootstrap-timepicker.min.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
 <style>
 ::-webkit-input-placeholder {
    text-align: center;
@@ -77,16 +83,30 @@ $(function() {
 
     <br>
   <div class="col-10">
-      <input class="form-control flipthis-highlight" type="number" name="Glucose" align='center' placeholder="Glucose level">
-    </div>
-        Carb intake: <input type="number" name="CarbIntake"><br>
-        Insulin: <input type="number" name="Insulin"><br>
-        Time since last meal (hours): <input type="number" name="Hours">
+      <input class="form-control flipthis-highlight" type="number" name="Glucose" placeholder="Glucose level"><br>
+
+      <input class="form-control flipthis-highlight" type="number" type="number" name="CarbIntake" placeholder="Carb Intake"><br>
+
+      <input class="form-control flipthis-highlight" type="number" type="number" name="Insulin" placeholder="Insulin Intake"><br>
+
+      <input id="timepicker5" type="text" class="input-small">
+      <i class="icon-time"></i>
+
+        <script type="text/javascript">
+            $('#timepicker5').timepicker({
+                template: false,
+                showInputs: false,
+                minuteStep: 5
+            });
+        </script>
+
+
+<input type="number" name="Hours">
              (minutes): <input type="number" name="Minutes"><br>
         <input type="button" onclick="resetData()" value="Clear">
         <input type="submit" value="Submit">
       </form>
-
+</div>
 
 </div>
 </div>
