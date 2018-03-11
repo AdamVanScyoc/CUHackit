@@ -6,6 +6,9 @@ import json
 
 app = Flask(__name__,template_folder="templates/",static_url_path='/static')
 
+def readDatabase(databaseName="database.json"):
+	return open(databaseName).read().split("\n")
+
 @app.route('/')
 def main():
 	return render_template('index.html')
