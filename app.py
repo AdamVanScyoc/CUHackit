@@ -21,8 +21,8 @@ def addData():
 	databaseFile.append(sample)
 	with open('database.json', 'w') as fp:
 		json.dump(databaseFile, fp)
-	#return render_template('newPage.html')
-	return redirect(url_for('main'))
+	return render_template('newPage.html')
+	#return redirect(url_for('main'))
 
 
 if __name__ == "__main__":
