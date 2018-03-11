@@ -17,7 +17,8 @@ def main():
 def addData():
 	sample = request.form.to_dict()
 	with open('database.json', 'a') as fp:
-		json.dump(sample + "\n", fp)
+		json.dump(sample, fp)
+		fp.write("\n")
 	return render_template('index.html')
 
 if __name__ == "__main__":
