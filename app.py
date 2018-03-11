@@ -11,9 +11,6 @@ try:
 except:
 	databaseFile = []
 
-def readDatabase(databaseName="database.json"):
-	return open(databaseName).read().split("\n")
-
 @app.route('/')
 def main():
 	return render_template('index.html')
