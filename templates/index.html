@@ -12,10 +12,12 @@
     <script>
       function resetData() {document.getElementById("dailyData").reset();}
     </script>
+    <div class="form-group form-group-lg">
+<div class="col-sm-9">
 
   <h1> Enter your diet intake for the day </h1>
     <form action="{{url_for('addData') }}" id="dailyData" method="post">
-       First Name: <input type="text" name="firstName"><br>
+       First Name: <input class="form-control flipthis-highlight" id="example-text-input-horizontal-lg" type="text" name="firstName" placeholder="First Name"><br>
        Last Name: <input type="text" name="lastName">
     <br>
     <br>
@@ -40,6 +42,7 @@
       </form>
 
 
-
+</div>
+</div>
 </body>
 </html>
