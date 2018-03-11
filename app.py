@@ -9,16 +9,25 @@ app = Flask(__name__,template_folder="templates/",static_url_path='/static')
 def readDatabase(databaseName="database.json"):
 	return open(databaseName).read().split("\n")
 
+
 @app.route('/')
 def main():
 	return render_template('index.html')
 
 @app.route('/submitForm', methods=["POST"])
 def addData():
+        x = 0
 	sample = request.form.to_dict()
 	with open('database.json', 'a') as fp:
-		json.dump(sample, fp)
-		fp.write("\n")
+            if x == 0:
+                fp.write('[')
+            if x == 1:
+                    fp.write('\b')
+                    fp.write(',')
+            x = 1
+            json.dump(sample, fp)
+            fp.write('\n]')
+		#fp.write(',')#"\n")
 	#return render_template('newPage.html')
 	return redirect(url_for('main'))
 
