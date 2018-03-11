@@ -1,0 +1,6 @@
+Blood Sugar Level Ranges (Millimoles perl liter)
+	    		Upon Waking	 Before Meal		At least 90 minutes after meals
+Non-Diabetic				 4.0 - 5.9 mmol/L 	under 7.8 mmol/L
+Type 2 Diabetes				 4 to 7 mmol/L		under 8.5 mmol/L
+Type 1 Diabetes		5 to 7 mmol/L	 	4 to 7 mmol/L		5 to 9 mmol/L
+Children w/ type 1	4 to 7 mmol/L	 	4 to 7 mmol/L		5 to 9 mmol/L
