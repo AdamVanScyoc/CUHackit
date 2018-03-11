@@ -19,7 +19,9 @@ def addData():
 	with open('database.json', 'a') as fp:
 		json.dump(sample, fp)
 		fp.write("\n")
-	return render_template('index.html')
+	#return render_template('newPage.html')
+	return redirect(url_for('main'))
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=5000)
