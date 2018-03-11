@@ -12,5 +12,11 @@ app = Flask(__name__,template_folder="templates/",static_url_path='/static')
 def main():
 	return render_template('index.html')
 
+@app.route('/submitForm', methods=["POST"])
+def main():
+	for key, value in request.form.items():
+		print("{} - {}".format(key, value))
+	return render_template('index.html')
+
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=5000)
