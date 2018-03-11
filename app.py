@@ -22,12 +22,37 @@ def addData():
 	databaseFile.append(sample)
 	with open('database.json', 'w') as fp:
 		json.dump(databaseFile, fp)
+	info = compareToLast(sample['firstName'], sample["lastName"], sample["Glucose"], sample["Insulin"], sample["carbIntake"])
 	return render_template('newPage.html')
 	#return redirect(url_for('main'))
 
 @app.route('/results')
 def returnResults():
 	return jsonify(databaseFile)
+
+def compareToLast(firstName, lastName, glucose, insulin, carbIntake):
+	try:
+		allGVals = []
+		allCVals = []
+		allIVals = []
+		for var in databaseFile:
+			if var['firstName'] == firstName && var['lastName'] == lastName:
+				allGVals.append(var['Glucose'])
+				allCVals.append(var["CarbIntake"])
+				allIVals.append(var['Insulin'])
+		if len(allGVals) == 1:
+			glucose = False
+			carbIntake = False
+			insulin = False
+		else:
+			glucose = (float(sum(allGVals)) / float(len(allGVals)) > glucose)
+			carbIntake = (float(sum(allCVals)) / float(len(allCVals)) > carbIntake)
+			insulin = (float(sum(allIVals)) / float(len(allIVals)) > insluin)
+		except:
+			glucose = False
+			carbIntake = False
+			insulin = False
+	return {"Glucose": glucose, "carbIntake": carbIntake, "Insulin": insulin}
 
 
 if __name__ == "__main__":
